@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Building2, Home, Palette, Wrench, Sofa, Truck, MapPin, ArrowRight } from "lucide-react"
+import { StaggerContainer, StaggerItem } from "@/components/animations/stagger-children"
 
 const services = [
   {
@@ -51,24 +52,26 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-lg bg-secondary/10 group-hover:bg-secondary/20 transition-colors">
-                    <service.icon className="h-6 w-6 text-secondary" />
+            <StaggerItem key={index}>
+              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <div className="p-3 rounded-lg bg-secondary/10 group-hover:bg-secondary/20 transition-colors">
+                      <service.icon className="h-6 w-6 text-secondary" />
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-secondary group-hover:translate-x-1 transition-all" />
                   </div>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-secondary group-hover:translate-x-1 transition-all" />
-                </div>
-                <CardTitle className="text-xl">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed">{service.description}</CardDescription>
-              </CardContent>
-            </Card>
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base leading-relaxed">{service.description}</CardDescription>
+                </CardContent>
+              </Card>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   )

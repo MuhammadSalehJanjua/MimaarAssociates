@@ -1,6 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ExternalLink } from "lucide-react"
+import { FadeIn } from "@/components/animations/fade-in"
 
 const projects = [
   {
@@ -33,43 +34,48 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-balance mb-4">Our Recent Projects</h2>
-          <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
-            Showcasing our expertise through successful construction and design projects
-          </p>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-balance mb-4">Our Recent Projects</h2>
+            <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
+              Showcasing our expertise through successful construction and design projects
+            </p>
+          </div>
+        </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="group overflow-hidden hover:shadow-lg transition-all duration-300">
-              <div className="aspect-[3/2] overflow-hidden">
+            <FadeIn key={index} delay={index * 0.1}>
+              <Card className="group relative overflow-hidden rounded-2xl border-0 aspect-[4/3]">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-              </div>
-              <CardContent className="p-6">
-                <div className="space-y-3">
-                  <div className="text-sm text-secondary font-medium">{project.category}</div>
-                  <h3 className="text-xl font-semibold text-balance">{project.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{project.description}</p>
-                  <Button variant="ghost" className="group/btn p-0 h-auto">
-                    View Details
-                    <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/40 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                  <div className="space-y-3 text-white">
+                    <div className="text-sm text-secondary font-medium tracking-wider uppercase">{project.category}</div>
+                    <h3 className="text-2xl font-bold">{project.title}</h3>
+                    <p className="text-white/80 leading-relaxed line-clamp-2">{project.description}</p>
+                    <Button variant="link" className="text-secondary p-0 h-auto font-semibold hover:text-white transition-colors">
+                      View Details
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+              </Card>
+            </FadeIn>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button size="lg" variant="outline">
-            View All Projects
-          </Button>
-        </div>
+        <FadeIn>
+          <div className="text-center mt-12">
+            <Button size="lg" variant="outline">
+              View All Projects
+            </Button>
+          </div>
+        </FadeIn>
       </div>
     </section>
   )

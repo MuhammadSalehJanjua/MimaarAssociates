@@ -2,7 +2,7 @@ import { MapPin, Phone, Mail, Globe } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-primary text-primary-foreground border-t border-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -35,27 +35,27 @@ export function Footer() {
             <h4 className="text-lg font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-sm opacity-80">
               <li>
-                <a href="#home" className="hover:opacity-100 transition-opacity">
+                <a href="#home" className="hover:opacity-100 hover:text-secondary transition-colors duration-300">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:opacity-100 transition-opacity">
+                <a href="#services" className="hover:opacity-100 hover:text-secondary transition-colors duration-300">
                   Services
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:opacity-100 transition-opacity">
+                <a href="#about" className="hover:opacity-100 hover:text-secondary transition-colors duration-300">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#projects" className="hover:opacity-100 transition-opacity">
+                <a href="#projects" className="hover:opacity-100 hover:text-secondary transition-colors duration-300">
                   Projects
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:opacity-100 transition-opacity">
+                <a href="#contact" className="hover:opacity-100 hover:text-secondary transition-colors duration-300">
                   Contact
                 </a>
               </li>
